@@ -1,0 +1,22 @@
+{
+    "Series Number": "116",
+    "Filename": "amaka-the-hypepriestess",
+    "Description": "Amaka is a very hyper that she hypes in the clubs",
+    "UUID": "c7726e84-3c5c-4e66-8677-cbfb5c9ee850",
+    "Hash": "baf198ff193f13c071eaa8b209bd8888250f1ba70e365521cd8874624be39318",
+    "format": "CHIP-0007",
+    "sensitive_content": false,
+    "series_total": 420,
+    "attributes": {
+        "trait_type": "gender",
+        "value": "female"
+    },
+    "collection": {
+        "name": "Zuri NFT Tickets for Free Lunch",
+        "id": "b774f676-c1d5-422e-beed-00ef5510c64d",
+        "attributes": {
+            "type": "description",
+            "value": "Rewards for accomplishments during HNGi9."
+        }
+    }
+}

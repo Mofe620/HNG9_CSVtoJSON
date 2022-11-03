@@ -32,19 +32,38 @@ if (isset($_POST["submit"])) {
 
             // release file handle
             fclose($uploaded_file);
-
+            
             foreach ($json as $item) {
                 $item["format"] = "CHIP-0007";
                 $item["sensitive_content"] = false;
+                $item["series_total"] = 420;
+                $item["attributes"]["trait_type"]= "gender";
+                $item["attributes"]["value"]= $item["Gender"];
+                $item["collection"]["name"]= "Zuri NFT Tickets for Free Lunch";
+                $item["collection"]["id"]= "b774f676-c1d5-422e-beed-00ef5510c64d";
+                $item["collection"]["attributes"]["type"]= "description";
+                $item["collection"]["attributes"]["value"]= "Rewards for accomplishments during HNGi9.";
+                    
+                unset($item["Gender"]);
 
                 // encode array to json
                 $json_data = json_encode($item);
 
-                $json_file = fopen("json_files/".$item["NFT NAME"].".json", "a");
+                // write each json object to file
+                $json_file = fopen("json_files/".$item["Filename"].".json", "a");
                 fwrite($json_file, $json_data);
                 fclose($json_file);
+
             }
             echo "Your json files have been generated successfully";
+
+            //WRITE HASH TO NEW CSV FILE
+            $new_csv = fopen("csv_modified/"."filename_output.csv", "w");
+            foreach ($json as $line) {
+                $hash = hash_hmac('sha256',json_encode($line), false);
+                $line["sha256"] = $hash;
+                fputcsv($new_csv, $line);
+            }
 
         } else {
             echo 'Only <b>.csv</b> file allowed';
